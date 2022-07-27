@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/27 17:41:48 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/27 18:11:11 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 
 typedef struct s_data
 {
-	struct	s_info	*info;
-	struct  s_philo	*philo;
+	struct	s_info		*info;
+	struct  s_philo		**philo;
+	pthread_mutex_t		*mutex;
 }	t_data;
 
 typedef struct s_info
@@ -38,7 +39,7 @@ typedef struct s_info
 	int	num_of_fork;
 }	t_info;
 
-typedef	struct s_philo;
+typedef	struct s_philo
 {
 	pthread_t	*p_thread;
 	int			philo_num;

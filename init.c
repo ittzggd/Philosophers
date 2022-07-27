@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/27 17:43:36 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/27 18:17:27 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static int	init_philo(t_data *data)
 			return (ERROR);
 		i++;
 	}
-
 }
 
  static t_info	*init_t_info(int argc, char **argv)
@@ -71,3 +70,19 @@ static int	init_philo(t_data *data)
 	info->num_of_fork = info->number_of_philo;
  }
 
+static int	init_mutex(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	data->mutex = ft_calloc(data->info->number_of_philo, sizeof(pthread_mutex_t));
+	if(!data->mutex)
+		return (ERROR);
+	while(i < data->info->number_of_philo)
+	{
+		if(pthread_mutex_init(&(data->mutex[i]), NULL))
+			return (ERROR);
+		i++;
+	}
+	
+}
