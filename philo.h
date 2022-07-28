@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:20:48 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 19:57:59 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/29 00:45:46 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 # include "./utils.h"
 
 int		create_philo(t_data *data);
-void	*philo(void *arg);
+void	*ft_philo(void *arg);
 
 #endif

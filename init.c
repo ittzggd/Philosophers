@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 18:59:03 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/29 00:44:30 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ static int	init_philo(t_data *data)
 {
 	t_info	*info;
 	int		i;
+	int		num;
 
 	if(!data)
 		return (ERROR);
 	i = 0;
 	info = data->info;
+	num = data->info->number_of_philo;
 	data->philo = ft_calloc(info->number_of_philo, sizeof(t_philo *));
 	if(!data->philo)
 		return (ERROR);
@@ -46,6 +48,8 @@ static int	init_philo(t_data *data)
 		data->philo[i]->p_thread = ft_calloc(1, sizeof(pthread_t));
 		if(!data->philo[i]->p_thread)
 			return (ERROR);
+		data->philo[i]->l_fork = i;
+		data->philo[i]->r_fork = (i + (num - 1)) % num;
 		i++;
 	}
 	return (TRUE);

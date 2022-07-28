@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:59:06 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 19:23:17 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/28 23:13:07 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	wait_philo(t_data *data, int idx)
 
 	while(1)
 	{
-		if(data->info->number_of_philo - 1 == idx)
+		if(data->info->number_of_philo - 1  == idx)
 		{
 			printf("end condition!\n");
 			usleep(10);

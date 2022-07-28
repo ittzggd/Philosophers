@@ -6,13 +6,13 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/27 17:57:23 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/27 18:08:11 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/29 01:32:09 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  # include "./philo.h"
 
- void	one_philo(t_data *data)
- {
-	;
- }
+//  void	one_philo(t_data *data)
+//  {
+// 	;
+//  }
