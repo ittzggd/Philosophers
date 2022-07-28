@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:35:02 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/21 17:48:04 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:33:06 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,12 @@ int	ft_atoi(const char *str)
 	if ((*str <= '0' || *str >= '9') && *str != '\0')
 		return (ERROR);
 	return ((n * negative));
+}
+
+int	ft_isdigit(int c)
+{
+	if ('0' <= c && c <= '9')
+		return (1);
+	else
+		return (0);
 }

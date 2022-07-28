@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/27 18:17:27 by hejang           ###   ########.fr       */
+/*   Updated: 2022/07/28 18:59:03 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
  static int	init_philo(t_data *data);
  static t_info	*init_t_info(int argc, char **argv);
+ static int	init_mutex(t_data *data);
 
  int	init(int argc, char **argv, t_data	*data)
  {
@@ -23,6 +24,8 @@
 		return (ERROR);
 	if(init_philo(data) == ERROR)
 		return (ERROR);
+	init_mutex(data);
+	return (TRUE);
  }
 
 static int	init_philo(t_data *data)
@@ -34,19 +37,21 @@ static int	init_philo(t_data *data)
 		return (ERROR);
 	i = 0;
 	info = data->info;
-	data->philo = ft_calloc(info->number_of_philo, sizeof(t_philo));
+	data->philo = ft_calloc(info->number_of_philo, sizeof(t_philo *));
 	if(!data->philo)
 		return (ERROR);
 	while(i < data->info->number_of_philo)
 	{
+		data->philo[i] = ft_calloc(1, sizeof(t_philo));
 		data->philo[i]->p_thread = ft_calloc(1, sizeof(pthread_t));
 		if(!data->philo[i]->p_thread)
 			return (ERROR);
 		i++;
 	}
+	return (TRUE);
 }
 
- static t_info	*init_t_info(int argc, char **argv)
+ t_info	*init_t_info(int argc, char **argv)
  {
 	t_info	*info;
 
@@ -60,7 +65,7 @@ static int	init_philo(t_data *data)
 	if(argc == 6)
 		info->num_of_times_each_philo_must_eat = ft_atoi(argv[5]);
 	else
-		info->num_of_times_each_philo_must_eat = NULL;
+		info->num_of_times_each_philo_must_eat = -99999;
 	if(info->number_of_philo <= 0 || info->time_to_die < 0
 		|| info->time_to_eat < 0 || info->time_to_sleep < 0)
 	{
@@ -68,6 +73,7 @@ static int	init_philo(t_data *data)
 		return (NULL);
 	}
 	info->num_of_fork = info->number_of_philo;
+	return (info);
  }
 
 static int	init_mutex(t_data *data)
@@ -84,5 +90,5 @@ static int	init_mutex(t_data *data)
 			return (ERROR);
 		i++;
 	}
-	
+	return (TRUE);
 }

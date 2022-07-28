@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/21 17:36:38 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 18:32:52 by hejang           ###   ########.fr       */
+/*   Created: 2022/07/28 17:59:06 by hejang            #+#    #+#             */
+/*   Updated: 2022/07/28 19:23:17 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./philo.h"
+# include "./philo.h"
 
-void	*ft_calloc(size_t number, size_t size);
-int		ft_atoi(const char *str);
-int		init(int argc, char **argv, t_data	*data);
-void	wait_philo(t_data *data, int idx);
-int		ft_isdigit(int c);
+void	wait_philo(t_data *data, int idx)
+{
+
+	while(1)
+	{
+		if(data->info->number_of_philo - 1 == idx)
+		{
+			printf("end condition!\n");
+			usleep(10);
+			break;
+		}
+	}
+}
