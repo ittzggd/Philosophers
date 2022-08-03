@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 19:46:50 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/03 16:12:02 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ typedef struct s_data
 {
 	struct	s_info		*info;
 	struct  s_philo		**philo;
-	pthread_mutex_t		*mutex;
+	pthread_mutex_t		*fork;
+	pthread_mutex_t		time_mutex;
 }	t_data;
 
 typedef struct s_info
@@ -41,12 +42,25 @@ typedef	struct s_philo
 	int				r_fork;
 	int				l_fork;
 	int				eat_cnt;
+	long long 		eating_ms;
+	long long		sleeping_ms;
+	long long		thinking_ms;
+	long long		died_ms;
 }	t_philo;
 
 
+enum e_state
+{
+	FORK = 2,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED,
+};
 
 # define ERROR -1
 # define FALSE	0
 # define TRUE	1
+
 
 #endif

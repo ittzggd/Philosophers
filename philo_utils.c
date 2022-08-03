@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:59:06 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/28 23:13:07 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/03 16:00:28 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,14 @@ void	wait_philo(t_data *data, int idx)
 			break;
 		}
 	}
+}
+
+long long	ft_time(t_philo	*philo)
+{
+	struct timeval	tv;
+	long long		time;
+
+	gettimeofday(&tv, NULL);
+	time = (tv.tv_sec * 1000) + (tv.tv_usec / 1000); // tv_usec : microsec
+//	printf("time : %u\n", time);
 }

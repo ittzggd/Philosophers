@@ -6,7 +6,7 @@
 #    By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/29 01:29:29 by hejang            #+#    #+#              #
-#    Updated: 2022/07/29 01:32:23 by hejang           ###   ########.fr        #
+#    Updated: 2022/08/01 17:44:33 by hejang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	= $(wildcard ${PWD}/*.c)
 
 OBJS	= $(SRCS:.c=.o)
 
-CC = gcc
+CC = gcc -g3
 CFLAGS = -Wall -Wextra -Werror -g3
 
 RM = rm -f

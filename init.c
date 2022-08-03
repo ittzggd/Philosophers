@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/07/29 00:44:30 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/03 15:51:43 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,11 @@ static int	init_philo(t_data *data)
 		data->philo[i]->p_thread = ft_calloc(1, sizeof(pthread_t));
 		if(!data->philo[i]->p_thread)
 			return (ERROR);
+		data->philo[i]->philo_num = i + 1;
 		data->philo[i]->l_fork = i;
-		data->philo[i]->r_fork = (i + (num - 1)) % num;
+		data->philo[i]->r_fork = (i + 1) % num;
+		data->philo[i]->data = data;
+		data->philo[i]->data = data;
 		i++;
 	}
 	return (TRUE);
@@ -66,6 +69,7 @@ static int	init_philo(t_data *data)
 	info->time_to_die = ft_atoi(argv[2]);
 	info->time_to_eat = ft_atoi(argv[3]);
 	info->time_to_sleep = ft_atoi(argv[4]);
+	info->cnt = 0;
 	if(argc == 6)
 		info->num_of_times_each_philo_must_eat = ft_atoi(argv[5]);
 	else
@@ -85,14 +89,15 @@ static int	init_mutex(t_data *data)
 	int	i;
 
 	i = 0;
-	data->mutex = ft_calloc(data->info->number_of_philo, sizeof(pthread_mutex_t));
-	if(!data->mutex)
+	data->fork = ft_calloc(data->info->number_of_philo, sizeof(pthread_mutex_t));
+	if(!data->fork)
 		return (ERROR);
 	while(i < data->info->number_of_philo)
 	{
-		if(pthread_mutex_init(&(data->mutex[i]), NULL))
+		if(pthread_mutex_init(&(data->fork[i]), NULL))
 			return (ERROR);
 		i++;
 	}
+	pthread_mutex_init(&data->time_mutex, NULL);
 	return (TRUE);
 }
