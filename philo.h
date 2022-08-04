@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 18:20:48 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/03 16:21:51 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/04 21:56:00 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@
 int		create_philo(t_data *data);
 void	*ft_philo(void *arg);
 int		philo_eat(t_philo *philo);
-void	ft_print(t_philo *philo, int state, int ms);
+int		philo_sleep(t_philo	*philo);
+void	ft_print(t_philo *philo, int state);
 void	one_philo(t_philo *philo);
 void	destroy_fork_mutex(t_data *data);
-
+void	philo_act(t_philo *philo, int state);
 #endif

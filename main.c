@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:30:24 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/03 15:29:45 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/04 16:25:25 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@
 		//if(data->info->number_of_philo == 1)
 		//	one_philo(data);
 		create_philo(data);
-
+		destroy_fork_mutex(data);
 	}
  }

@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/03 16:14:25 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/04 21:55:47 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	wait_create_thread(t_philo *philo)
 		}
 		else
 		{
-			printf("philo[%d] is still waiting!\n");
+		//	printf("philo[%d] is still waiting!\n");
 			usleep(100);
 		}
 	}
-	printf("philo[%d] wating over!\n", philo->philo_num);
+	printf("philo[%d] waiting over!\n", philo->philo_num);
 }
 int	create_philo(t_data *data)
 {
@@ -47,7 +47,7 @@ int	create_philo(t_data *data)
 	pthread_mutex_lock(&tmp);
 	while(i < data->info->number_of_philo)
 	{
-		printf("%d\n", i);
+//		printf("%d\n", i);
 		data->info->cnt = i;
 		data->philo[i]->philo_num = i + 1;
 	//	printf("philo num = %d\n", data->philo[i]->philo_num);
@@ -72,25 +72,20 @@ void	*ft_philo(void *arg)
 	t_philo			*philo;
 	t_info			*info;
 	pthread_mutex_t *fork;
-	long long		start_time;
 	
 	philo = (t_philo *)arg;
-	//printf("hi im %d\n", philo->philo_num);
 	fork = philo->data->fork;
 	info = philo->data->info;
 	if(philo->philo_num % 2 == 0)
-		usleep (100);
+		usleep(100);
 	pthread_mutex_lock(&(philo->data->time_mutex));
-	start_time = ft_time(philo);
+	philo->data->info->start_time = ft_time(philo);
 	pthread_mutex_unlock(&(philo->data->time_mutex));
-	if(philo->data->info->num_of_fork == 1)
-		one_philo(philo);
-	wait_create_thread(philo);
+//	wait_create_thread(philo);
 	if(philo_eat(philo) == TRUE)
 	{
-		ft_print(philo, EATING, 0);
-		sleep(10);
-	 	pthread_mutex_unlock(&(fork[philo->l_fork]));
-		pthread_mutex_unlock(&fork[philo->r_fork]);
+		philo_sleep(philo);
+	 	// pthread_mutex_unlock(&(fork[philo->l_fork]));
+		// pthread_mutex_unlock(&fork[philo->r_fork]);
 	}
 }

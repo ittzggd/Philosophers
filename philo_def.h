@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/03 16:12:02 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/04 21:40:29 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ typedef struct s_data
 
 typedef struct s_info
 {
-	int	number_of_philo;
-	int	time_to_die;
-	int	time_to_eat;
-	int	time_to_sleep;
-	int	num_of_times_each_philo_must_eat;
-	int	num_of_fork;
-	int	cnt;
+	long long	number_of_philo;
+	long long	time_to_die;
+	long long	time_to_eat;
+	long long	time_to_sleep;
+	int			num_of_times_each_philo_must_eat;
+	int			num_of_fork;
+	int			cnt;
+	long long	start_time;
 }	t_info;
 
 typedef	struct s_philo
@@ -42,10 +43,10 @@ typedef	struct s_philo
 	int				r_fork;
 	int				l_fork;
 	int				eat_cnt;
-	long long 		eating_ms;
-	long long		sleeping_ms;
-	long long		thinking_ms;
-	long long		died_ms;
+	long long 		eat_ms;
+	long long		sleep_ms;
+	long long		think_ms;
+	long long		die_ms;
 }	t_philo;
 
 

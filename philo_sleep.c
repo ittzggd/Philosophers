@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy.c                                          :+:      :+:    :+:   */
+/*   philo_sleep.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 16:21:15 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/04 21:45:32 by hejang           ###   ########.fr       */
+/*   Created: 2022/08/04 21:47:24 by hejang            #+#    #+#             */
+/*   Updated: 2022/08/04 21:56:54 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
- # include "./philo.h"
+# include "./philo.h"
 
- void	destroy_fork_mutex(t_data *data)
- {
-	int		i;
-	t_philo	**philo;
-
-	philo = data->philo;
-	while(i < data->info->number_of_philo - 1)
-	{
-		pthread_mutex_destroy(&(data->fork[i]));
-		i++;
-	}
-	pthread_mutex_destroy(&(data->time_mutex));
- }
+int	philo_sleep(t_philo	*philo)
+{
+	ft_print(philo, SLEEPING);
+	philo_act(philo, SLEEPING);
+}
