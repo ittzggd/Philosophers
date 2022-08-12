@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/04 21:40:29 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/13 02:51:34 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_data
 	struct  s_philo		**philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		time_mutex;
+	int					end_flag;
+	int					philo_full;
 }	t_data;
 
 typedef struct s_info
@@ -47,6 +49,8 @@ typedef	struct s_philo
 	long long		sleep_ms;
 	long long		think_ms;
 	long long		die_ms;
+	long long		last_eat;
+	int				death_flag;
 }	t_philo;
 
 
@@ -57,6 +61,7 @@ enum e_state
 	SLEEPING,
 	THINKING,
 	DIED,
+	FULL,
 };
 
 # define ERROR -1

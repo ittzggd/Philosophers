@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/03 15:51:43 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/13 03:26:55 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ static int	init_philo(t_data *data)
 	i = 0;
 	info = data->info;
 	num = data->info->number_of_philo;
+	data->philo_full = 0;
 	data->philo = ft_calloc(info->number_of_philo, sizeof(t_philo *));
 	if(!data->philo)
 		return (ERROR);
@@ -52,9 +53,10 @@ static int	init_philo(t_data *data)
 		data->philo[i]->l_fork = i;
 		data->philo[i]->r_fork = (i + 1) % num;
 		data->philo[i]->data = data;
-		data->philo[i]->data = data;
+		data->philo[i]->death_flag = FALSE;
+		data->philo[i]->last_eat = ft_time();
 		i++;
-	}
+}
 	return (TRUE);
 }
 

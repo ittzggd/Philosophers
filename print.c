@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:59:33 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/04 21:40:41 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/13 01:07:16 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 	long long	to_time;
 	long long	timestamp;
 
+	// if(philo->data->end_flag == TRUE)
+	// 	return ;
 	pthread_mutex_lock(&(philo->data->time_mutex));
-	to_time = ft_time(philo);
+	to_time = ft_time();
 	timestamp = to_time - philo->data->info->start_time;
 	// printf("//%d, time : %lld//\n", philo->philo_num, timestamp);
 	if(state == FORK)

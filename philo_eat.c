@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 15:37:59 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/04 21:56:17 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/13 03:29:39 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int	philo_eat(t_philo *philo)
 		}
 	}
 	philo->eat_cnt++;
+	if(philo->eat_cnt == info->num_of_times_each_philo_must_eat)
+		philo->data->philo_full++;
+	philo->last_eat = ft_time();
 	pthread_mutex_unlock(&(fork[philo->l_fork]));
 	pthread_mutex_unlock(&(fork[philo->r_fork]));
 	return (TRUE);

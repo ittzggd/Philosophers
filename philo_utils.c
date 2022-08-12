@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:59:06 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/04 21:54:34 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/12 20:36:41 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 	long long	diff;
 	long long	time_to_wait;
 	
-	start_time = ft_time(philo);
+	start_time = ft_time();
 	if(state == EATING)
 		time_to_wait = philo->data->info->time_to_eat;
 	else if(state == SLEEPING)
@@ -29,8 +29,7 @@
 	diff = 0;
 	while(time_to_wait >= diff)
 	{
-		
-		current_time = ft_time(philo);
+		current_time = ft_time();
 		diff = current_time - start_time;
 		usleep(100);
 	}
@@ -50,7 +49,7 @@ void	wait_philo(t_data *data, int idx)
 	}
 }
 
-long long	ft_time(t_philo	*philo)
+long long	ft_time(void)
 {
 	struct timeval	tv;
 	long long		time;
