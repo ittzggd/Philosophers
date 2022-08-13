@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/13 03:29:24 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/14 01:11:14 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,25 +18,26 @@ int	ft_check_philo(t_data *data);
 int	check_die(t_philo *philo);
 int	check_full(t_data *data);
 
-void	wait_create_thread(t_philo *philo)
-{
-	printf("hi! philo[%d] start to wait! \n", philo->philo_num);
-	while (1)
-	{
-		if (philo->data->info->cnt == philo->data->info->number_of_philo-1)
-		{
-		//	philo->start_ms = base->timestamp_start_ms;
-			usleep(100);
-			break ;
-		}
-		else
-		{
-		//	printf("philo[%d] is still waiting!\n");
-			usleep(100);
-		}
-	}
-	printf("philo[%d] waiting over!\n", philo->philo_num);
-}
+// void	wait_create_thread(t_philo *philo)
+// {
+// 	printf("hi! philo[%d] start to wait! \n", philo->philo_num);
+// 	while (1)
+// 	{
+// 		if (philo->data->info->cnt == philo->data->info->number_of_philo-1)
+// 		{
+// 		//	philo->start_ms = base->timestamp_start_ms;
+// 			usleep(100);
+// 			break ;
+// 		}
+// 		else
+// 		{
+// 		//	printf("philo[%d] is still waiting!\n");
+// 			usleep(100);
+// 		}
+// 	}
+// 	printf("philo[%d] waiting over!\n", philo->philo_num);
+// }
+
 int	create_philo(t_data *data)
 {
 	pthread_mutex_t	tmp;	
@@ -62,8 +63,9 @@ int	create_philo(t_data *data)
 	}
 	pthread_mutex_unlock(&tmp);
 	i = 0;
-	while(1)
+	while(data->end_flag != TRUE)
 	{
+		i = 0;
 		while(i < data->info->number_of_philo)
 		{
 			if(ft_check_philo(data->philo[i]->data) == DIED)
@@ -73,9 +75,8 @@ int	create_philo(t_data *data)
 			}
 			i++;
 		}
-		if(data->end_flag == TRUE)
-			break;
 	}
+	i = 0;
 	while(i < data->info->number_of_philo)
 	{
 		pthread_join(*(data->philo[i]->p_thread), NULL);
@@ -101,7 +102,7 @@ void	*ft_philo(void *arg)
 	while(philo->data->end_flag != TRUE)
 	{
 	//	wait_create_thread(philo);
-		if(philo_eat(philo) == TRUE)
+		if(philo_eat(philo) == TRUE && philo->data->end_flag != TRUE) 
 		{
 			philo_sleep(philo);
 			philo_think(philo);
@@ -111,10 +112,6 @@ void	*ft_philo(void *arg)
 	}
 }
 
-void	philo_think(t_philo *philo)
-{
-	ft_print(philo, THINKING);
-}
 
 int	ft_check_philo(t_data *data)
 {
@@ -143,9 +140,7 @@ int	check_full(t_data *data)
 
 	info = data->info;
 	if(data->philo_full == info->num_of_times_each_philo_must_eat)
-	{
 		return (TRUE);
-	}
 	else
 		return(FALSE);
 }
