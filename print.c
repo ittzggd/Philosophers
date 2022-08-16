@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:59:33 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/14 00:58:54 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 15:13:03 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 	long long	to_time;
 	long long	timestamp;
 
-//	if(philo->data->end_flag == TRUE)
-//	 	return ;
+	if(philo->data->end_flag == TRUE)
+	 	return ;
 	pthread_mutex_lock(&(philo->data->time_mutex));
 	to_time = ft_time();
 	timestamp = to_time - philo->data->info->start_time;
@@ -33,5 +33,6 @@
 		printf("%lld\t[philo%d] is thinking\n", timestamp, philo->philo_num);
 	else if(state == DIED)
 		printf("%lld\t[philo%d] is died\n", timestamp, philo->philo_num);
- 	pthread_mutex_unlock(&(philo->data->time_mutex));
+	usleep(100);
+	pthread_mutex_unlock(&(philo->data->time_mutex));
  }
