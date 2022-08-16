@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/14 01:11:14 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 14:59:04 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,6 @@ void	philo_think(t_philo *philo);
 int	ft_check_philo(t_data *data);
 int	check_die(t_philo *philo);
 int	check_full(t_data *data);
-
-// void	wait_create_thread(t_philo *philo)
-// {
-// 	printf("hi! philo[%d] start to wait! \n", philo->philo_num);
-// 	while (1)
-// 	{
-// 		if (philo->data->info->cnt == philo->data->info->number_of_philo-1)
-// 		{
-// 		//	philo->start_ms = base->timestamp_start_ms;
-// 			usleep(100);
-// 			break ;
-// 		}
-// 		else
-// 		{
-// 		//	printf("philo[%d] is still waiting!\n");
-// 			usleep(100);
-// 		}
-// 	}
-// 	printf("philo[%d] waiting over!\n", philo->philo_num);
-// }
 
 int	create_philo(t_data *data)
 {
@@ -65,16 +45,18 @@ int	create_philo(t_data *data)
 	i = 0;
 	while(data->end_flag != TRUE)
 	{
-		i = 0;
-		while(i < data->info->number_of_philo)
-		{
-			if(ft_check_philo(data->philo[i]->data) == DIED)
-			{
-				data->end_flag == TRUE;
-				break;
-			}
-			i++;
-		}
+		if(ft_check_philo(data) == DIED || ft_check_philo == FULL)
+			break;
+		// i = 0;
+		// while(i < data->info->number_of_philo)
+		// {
+		// 	if(ft_check_philo(data->philo[i]->data) == DIED)
+		// 	{
+		// 		data->end_flag == TRUE;
+		// 		break;
+		// 	}
+		// 	i++;
+		// }
 	}
 	i = 0;
 	while(i < data->info->number_of_philo)
@@ -101,13 +83,10 @@ void	*ft_philo(void *arg)
 	pthread_mutex_unlock(&(philo->data->time_mutex));
 	while(philo->data->end_flag != TRUE)
 	{
-	//	wait_create_thread(philo);
 		if(philo_eat(philo) == TRUE && philo->data->end_flag != TRUE) 
 		{
 			philo_sleep(philo);
 			philo_think(philo);
-			// pthread_mutex_unlock(&(fork[philo->l_fork]));
-			// pthread_mutex_unlock(&fork[philo->r_fork]);
 		}
 	}
 }
