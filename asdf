@@ -1,0 +1,151 @@
+0	[philo1] has taken a fork
+0	[philo1] has taken a fork
+0	[philo1] is eating
+0	[philo3] has taken a fork
+0	[philo3] has taken a fork
+0	[philo3] is eating
+201	[philo1] is sleeping
+201	[philo2] has taken a fork
+201	[philo3] is sleeping
+201	[philo2] has taken a fork
+201	[philo2] is eating
+201	[philo4] has taken a fork
+201	[philo4] has taken a fork
+201	[philo4] is eating
+402	[philo4] is sleeping
+402	[philo3] is thinking
+402	[philo3] has taken a fork
+402	[philo3] has taken a fork
+402	[philo3] is eating
+402	[philo1] is thinking
+402	[philo1] has taken a fork
+402	[philo1] has taken a fork
+402	[philo1] is eating
+402	[philo2] is sleeping
+603	[philo4] is thinking
+603	[philo2] is thinking
+603	[philo4] has taken a fork
+603	[philo3] is sleeping
+603	[philo1] is sleeping
+603	[philo2] has taken a fork
+603	[philo2] has taken a fork
+603	[philo2] is eating
+603	[philo4] has taken a fork
+603	[philo4] is eating
+804	[philo1] is thinking
+804	[philo3] is thinking
+804	[philo4] is sleeping
+804	[philo1] has taken a fork
+804	[philo1] has taken a fork
+804	[philo3] has taken a fork
+804	[philo3] has taken a fork
+804	[philo3] is eating
+804	[philo1] is eating
+804	[philo2] is sleeping
+1005	[philo3] is sleeping
+1005	[philo2] is thinking
+1005	[philo4] is thinking
+1005	[philo4] has taken a fork
+1005	[philo1] is sleeping
+1005	[philo4] has taken a fork
+1005	[philo4] is eating
+1005	[philo2] has taken a fork
+1005	[philo2] has taken a fork
+1005	[philo2] is eating
+1206	[philo4] is sleeping
+1206	[philo2] is sleeping
+1206	[philo3] is thinking
+1206	[philo3] has taken a fork
+1206	[philo3] has taken a fork
+1206	[philo3] is eating
+1206	[philo1] is thinking
+1206	[philo1] has taken a fork
+1206	[philo1] has taken a fork
+1206	[philo1] is eating
+1407	[philo4] is thinking
+1407	[philo1] is sleeping
+1407	[philo2] is thinking
+1407	[philo2] has taken a fork
+1407	[philo3] is sleeping
+1407	[philo4] has taken a fork
+1407	[philo4] has taken a fork
+1407	[philo4] is eating
+1407	[philo2] has taken a fork
+1407	[philo2] is eating
+1608	[philo1] is thinking
+1608	[philo3] is thinking
+1608	[philo1] has taken a fork
+1608	[philo1] has taken a fork
+1608	[philo1] is eating
+1608	[philo4] is sleeping
+1608	[philo3] has taken a fork
+1608	[philo3] has taken a fork
+1608	[philo3] is eating
+1608	[philo2] is sleeping
+1809	[philo1] is sleeping
+1809	[philo3] is sleeping
+1809	[philo4] is thinking
+1809	[philo4] has taken a fork
+1809	[philo4] has taken a fork
+1809	[philo4] is eating
+1809	[philo2] is thinking
+1809	[philo2] has taken a fork
+1809	[philo2] has taken a fork
+1809	[philo2] is eating
+2010	[philo2] is sleeping
+2010	[philo4] is sleeping
+2010	[philo1] is thinking
+2010	[philo1] has taken a fork
+2010	[philo1] has taken a fork
+2010	[philo1] is eating
+2010	[philo3] is thinking
+2010	[philo3] has taken a fork
+2010	[philo3] has taken a fork
+2010	[philo3] is eating
+2211	[philo1] is sleeping
+2211	[philo4] is thinking
+2211	[philo2] is thinking
+2211	[philo2] has taken a fork
+2211	[philo4] has taken a fork
+2211	[philo4] has taken a fork
+2211	[philo4] is eating
+2211	[philo2] has taken a fork
+2211	[philo2] is eating
+2211	[philo3] is sleeping
+2412	[philo3] is thinking
+2412	[philo2] is sleeping
+2412	[philo3] has taken a fork
+2412	[philo3] has taken a fork
+2412	[philo3] is eating
+2412	[philo1] is thinking
+2412	[philo1] has taken a fork
+2412	[philo4] is sleeping
+2412	[philo1] has taken a fork
+2412	[philo1] is eating
+2613	[philo3] is sleeping
+2613	[philo2] is thinking
+2613	[philo2] has taken a fork
+2613	[philo2] has taken a fork
+2613	[philo2] is eating
+2613	[philo1] is sleeping
+2613	[philo4] is thinking
+2613	[philo4] has taken a fork
+2613	[philo4] has taken a fork
+2613	[philo4] is eating
+2814	[philo4] is sleeping
+2814	[philo2] is sleeping
+2814	[philo3] is thinking
+2814	[philo3] has taken a fork
+2814	[philo3] has taken a fork
+2814	[philo3] is eating
+2814	[philo1] is thinking
+2814	[philo1] has taken a fork
+2814	[philo1] has taken a fork
+2814	[philo1] is eating
+3015	[philo4] is thinking
+3015	[philo2] is thinking
+3015	[philo1] is sleeping
+3015	[philo2] has taken a fork
+3015	[philo3] is sleeping
+3015	[philo2] has taken a fork
+30

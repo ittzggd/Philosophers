@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 20:11:32 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 21:11:49 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ typedef struct s_data
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		time_mutex;
 	pthread_mutex_t		flag_mutex;
+	pthread_mutex_t		mu;
+	pthread_mutex_t		start_line;
 	int					end_flag;
 	int					philo_full;
 }	t_data;

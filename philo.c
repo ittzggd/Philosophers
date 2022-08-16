@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 20:20:30 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 21:16:28 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ int	check_full(t_data *data);
 
 int	create_philo(t_data *data)
 {
-	pthread_mutex_t	tmp;	
 	int	i;
 	int	thr_id;
 
 	i = 0;
 	if(!data)
 		return (ERROR);
-	pthread_mutex_init(&tmp, NULL);
-	pthread_mutex_lock(&tmp);
+	data->info->start_time = ft_time();
+	pthread_mutex_init(&(data->start_line), NULL);
+	pthread_mutex_lock(&(data->start_line));
 	while(i < data->info->number_of_philo)
 	{
 //		printf("%d\n", i);
@@ -41,12 +41,13 @@ int	create_philo(t_data *data)
 		usleep(100);
 		i++;
 	}
-	pthread_mutex_unlock(&tmp);
+	pthread_mutex_unlock(&(data->start_line));
 	i = 0;
 	while(data->end_flag != TRUE)
 	{
 		if(ft_check_philo(data) == DIED || ft_check_philo(data) == FULL)
 			break;
+		usleep(100);
 	}
 	i = 0;
 	while(i < data->info->number_of_philo)
@@ -66,17 +67,26 @@ void	*ft_philo(void *arg)
 	philo = (t_philo *)arg;
 	fork = philo->data->fork;
 	info = philo->data->info;
+	
+	pthread_mutex_lock(&(philo->data->start_line));
+	pthread_mutex_unlock(&(philo->data->start_line));
 	if(philo->philo_num % 2 == 0)
-		usleep(200);
-	pthread_mutex_lock(&(philo->data->time_mutex));
-	philo->data->info->start_time = ft_time();
-	pthread_mutex_unlock(&(philo->data->time_mutex));
+		usleep(info->time_to_eat * 800);
+	// pthread_mutex_lock(&(philo->data->time_mutex));
+	// philo->data->info->start_time = ft_time();
+	// pthread_mutex_unlock(&(philo->data->time_mutex));
 	while(philo->data->end_flag != TRUE)
 	{
 		if(philo_eat(philo) == TRUE && philo->data->end_flag != TRUE) 
 		{
+			if(philo->data->end_flag == TRUE)
+				break;
 			philo_sleep(philo);
+			if(philo->data->end_flag == TRUE)
+				break;
 			philo_think(philo);
+			if(philo->data->end_flag == TRUE)
+				break;
 		}
 	}
 }
@@ -85,12 +95,11 @@ void	*ft_philo(void *arg)
 int	ft_check_philo(t_data *data)
 {
 	int	i;
-	t_info	*info;
 	
 	i = 0;
-	info = data->info;
 	while(i < data->info->number_of_philo)
 	{
+		pthread_mutex_lock(&data->mu);
 		if(check_die(data->philo[i]) == TRUE)
 		{
 			data->end_flag = TRUE;
@@ -101,6 +110,7 @@ int	ft_check_philo(t_data *data)
 			data->end_flag = TRUE;
 			return (FULL);
 		}
+		pthread_mutex_unlock(&data->mu);
 		i++;
 	}
 	return (TRUE);

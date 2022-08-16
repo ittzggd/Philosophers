@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/21 17:33:49 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 20:11:31 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:31:33 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,6 @@ static int	init_mutex(t_data *data)
 	}
 	pthread_mutex_init(&data->time_mutex, NULL);
 	pthread_mutex_init(&data->flag_mutex, NULL);
+	pthread_mutex_init(&data->mu, NULL);
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:55:31 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 20:15:32 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 21:03:57 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@
 	else if(state == SLEEPING)
 		time_to_wait = philo->data->info->time_to_sleep;
 	diff = 0;
+	usleep(time_to_wait * 800);
 	while(time_to_wait >= diff)
 	{
 		current_time = ft_time();
 		diff = current_time - start_time;
-		usleep(100);
+		usleep(300);
 	}
  }
 
@@ -51,15 +52,15 @@ int	philo_eat(t_philo *philo)
 			philo_act(philo, EATING);
 		}
 	}
+	philo->last_eat = ft_time();
 	philo->eat_cnt++;
 	if(philo->eat_cnt == info->num_of_times_each_philo_must_eat)
 		philo->data->philo_full++;
-	philo->last_eat = ft_time();
 	pthread_mutex_unlock(&(fork[philo->l_fork]));
 //	printf("[philo %d] left fork is down\n", philo->philo_num);
 	pthread_mutex_unlock(&(fork[philo->r_fork]));
 //	printf("[philo %d] right fork is down\n", philo->philo_num);
-
+	
 	return (TRUE);
  }
 
@@ -67,9 +68,8 @@ int	philo_sleep(t_philo	*philo)
 {
 	pthread_mutex_lock(&(philo->data->flag_mutex));
 	ft_print(philo, SLEEPING);
-	philo_act(philo, SLEEPING);
 	pthread_mutex_unlock(&(philo->data->flag_mutex));
-
+	philo_act(philo, SLEEPING);
 }
 
 void	philo_think(t_philo *philo)

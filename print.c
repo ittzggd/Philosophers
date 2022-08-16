@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 17:59:33 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 20:23:01 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 21:17:39 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,5 @@
 		printf("%lld\t[philo%d] is thinking\n", timestamp, philo->philo_num);
 	else if(state == DIED)
 		printf("%lld\t[philo%d] is died\n", timestamp, philo->philo_num);
-	usleep(100);
 	pthread_mutex_unlock(&(philo->data->time_mutex));
  }
