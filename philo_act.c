@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_act.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:55:31 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/14 00:38:31 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:15:32 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,16 @@ int	philo_eat(t_philo *philo)
 
 int	philo_sleep(t_philo	*philo)
 {
+	pthread_mutex_lock(&(philo->data->flag_mutex));
 	ft_print(philo, SLEEPING);
 	philo_act(philo, SLEEPING);
+	pthread_mutex_unlock(&(philo->data->flag_mutex));
+
 }
 
 void	philo_think(t_philo *philo)
 {
+	pthread_mutex_lock(&(philo->data->flag_mutex));
 	ft_print(philo, THINKING);
+	pthread_mutex_unlock(&(philo->data->flag_mutex));
 }

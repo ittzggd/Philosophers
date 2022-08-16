@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 14:59:04 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:20:30 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,15 @@ int	create_philo(t_data *data)
 		thr_id = pthread_create(data->philo[i]->p_thread, NULL, ft_philo, (void *)(data->philo[i]));
 		if(thr_id < 0)
 			printf("thread create error");
-		usleep(10);
+		usleep(100);
 		i++;
 	}
 	pthread_mutex_unlock(&tmp);
 	i = 0;
 	while(data->end_flag != TRUE)
 	{
-		if(ft_check_philo(data) == DIED || ft_check_philo == FULL)
+		if(ft_check_philo(data) == DIED || ft_check_philo(data) == FULL)
 			break;
-		// i = 0;
-		// while(i < data->info->number_of_philo)
-		// {
-		// 	if(ft_check_philo(data->philo[i]->data) == DIED)
-		// 	{
-		// 		data->end_flag == TRUE;
-		// 		break;
-		// 	}
-		// 	i++;
-		// }
 	}
 	i = 0;
 	while(i < data->info->number_of_philo)
@@ -77,7 +67,7 @@ void	*ft_philo(void *arg)
 	fork = philo->data->fork;
 	info = philo->data->info;
 	if(philo->philo_num % 2 == 0)
-		usleep(100);
+		usleep(200);
 	pthread_mutex_lock(&(philo->data->time_mutex));
 	philo->data->info->start_time = ft_time();
 	pthread_mutex_unlock(&(philo->data->time_mutex));
@@ -102,7 +92,10 @@ int	ft_check_philo(t_data *data)
 	while(i < data->info->number_of_philo)
 	{
 		if(check_die(data->philo[i]) == TRUE)
+		{
+			data->end_flag = TRUE;
 			return (DIED);
+		}
 		else if(check_full(data) == TRUE)
 		{
 			data->end_flag = TRUE;
@@ -137,9 +130,9 @@ int	check_die(t_philo *philo)
 	diff = current_time - last_eat;
 	if(diff >= time_to_die)
 	{
+		pthread_mutex_lock(&(philo->data->flag_mutex));
 		ft_print(philo, DIED);
-		philo->death_flag = TRUE;
-		philo->data->end_flag = TRUE;
+		pthread_mutex_unlock(&(philo->data->flag_mutex));
 		return (TRUE);
 	}
 }

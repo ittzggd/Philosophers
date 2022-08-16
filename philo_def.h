@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_def.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hejang <hejang@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 13:46:58 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/14 00:42:47 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/16 20:11:32 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct s_data
 	struct  s_philo		**philo;
 	pthread_mutex_t		*fork;
 	pthread_mutex_t		time_mutex;
+	pthread_mutex_t		flag_mutex;
 	int					end_flag;
 	int					philo_full;
 }	t_data;
