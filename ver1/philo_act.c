@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 15:55:31 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 21:03:57 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/17 20:46:38 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 		time_to_wait = philo->data->info->time_to_sleep;
 	diff = 0;
 	usleep(time_to_wait * 800);
-	while(time_to_wait >= diff)
+	while(time_to_wait > diff)
 	{
 		current_time = ft_time();
 		diff = current_time - start_time;

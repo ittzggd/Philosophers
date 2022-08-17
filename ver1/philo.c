@@ -6,7 +6,7 @@
 /*   By: hejang <hejang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 17:40:28 by hejang            #+#    #+#             */
-/*   Updated: 2022/08/16 21:16:28 by hejang           ###   ########.fr       */
+/*   Updated: 2022/08/17 20:46:55 by hejang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int	check_die(t_philo *philo)
 	time_to_die = philo->data->info->time_to_die;
 	last_eat = philo->last_eat;
 	diff = current_time - last_eat;
-	if(diff >= time_to_die)
+	if (diff > time_to_die)
 	{
 		pthread_mutex_lock(&(philo->data->flag_mutex));
 		ft_print(philo, DIED);
